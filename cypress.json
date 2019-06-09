@@ -1,0 +1,10 @@
+{
+    "baseUrl": "https://nothinggifts.vendhq.com",
+    "viewportWidth": 1280,
+    "viewportHeight": 768,
+    "env": {
+        "managerUser": "Manager",
+        "managerPassword": "<manager-password>",
+        "accessToken": "<access-token>"
+    }
+}
