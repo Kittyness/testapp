@@ -4,7 +4,9 @@
     "viewportHeight": 768,
     "env": {
         "managerUser": "Manager",
-        "managerPassword": "<manager-password>",
-        "accessToken": "<access-token>"
+        "managerPassword": "testManager",
+        "cashierUser": "Cashier",
+        "cashierPassword": "testCashier",
+        "accessToken": "Kh7UKpuhyP6Ngib6mTKMm_83wQ2yPE459oIRxNKB"
     }
 }
