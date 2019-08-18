@@ -1,12 +1,12 @@
 {
-    "baseUrl": "https://nothinggifts.vendhq.com",
-    "viewportWidth": 1280,
-    "viewportHeight": 768,
-    "env": {
-        "managerUser": "Manager",
-        "managerPassword": "testManager",
-        "cashierUser": "Cashier",
-        "cashierPassword": "testCashier",
-        "accessToken": "Kh7UKpuhyP6Ngib6mTKMm_83wQ2yPE459oIRxNKB"
-    }
+  "baseUrl": "https://katesbestchillnfood.vendhq.com",
+  "viewportWidth": 1280,
+  "viewportHeight": 768,
+  "env": {
+    "managerUser": "Manager",
+    "managerPassword": "testManager",
+    "cashierUser": "Cashier",
+    "cashierPassword": "testCashier",
+    "accessToken": "Kh7UKpuhyP6NgxHPmOVqx_7GtgkCLJMtcAdS1Y0K"
+  }
 }
