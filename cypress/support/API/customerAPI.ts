@@ -50,7 +50,7 @@ export function deleteCustomer(customerId: string) {
   });
 }
 
-export function getCustomerId(customer: CustomerInfo): any {
+export function getCustomerId(customer: CustomerInfo) {
   return cy
     .request({
       url: "/api/2.0/customers/",
@@ -65,6 +65,6 @@ export function getCustomerId(customer: CustomerInfo): any {
     .then(parsedCustomer => {
       console.log("getCustomerId - PARSED RESULT");
       console.log(parsedCustomer.id);
-      return parsedCustomer.id;
+      return parsedCustomer.id as string;
     });
 }

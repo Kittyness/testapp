@@ -17,7 +17,7 @@ const currentCustomer: customer.CustomerInfo = {
 describe("Checking Adding customer via API", function() {
   xit("Cashier should be able to add customer to sale", function() {
     // Add customer if doesn't exist
-    let customerId = api.getCustomerId(currentCustomer);
+    let customerId: any = api.getCustomerId(currentCustomer);
     if (customerId !== "") {
       console.log("LOGGING THE CUSTOMER ID");
       console.log(customerId);
@@ -35,7 +35,6 @@ describe("Checking Adding customer via API", function() {
       console.log("LOGGING THE CUSTOMER ID");
       console.log(customerId);
       api.deleteCustomer(customerId);
-    } else {
     }
   });
 });

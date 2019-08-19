@@ -14,6 +14,7 @@ export interface CustomerInfo {
 }
 
 export function addExistingCustomer(name: string) {
+  cy.wait(5000);
   cy.get(".wr-customer-search vd-autocomplete .vd-autocomplete-input").type(
     name
   );
