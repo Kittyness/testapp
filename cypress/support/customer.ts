@@ -14,16 +14,29 @@ export interface CustomerInfo {
 }
 
 export function addExistingCustomer(name: string) {
-  cy.wait(5000);
-  cy.get(".wr-customer-search vd-autocomplete .vd-autocomplete-input").type(
-    name
-  );
+  function enterCustomerNameAndSelectFromAutocomplete(tryNumber: number) {
+    if (tryNumber > 10) {
+      assert.fail(false, true, "Too many tries.");
+    }
 
-  // Select the first customer from suggestions
-  cy.get(".vd-suggestion")
-    .eq(0)
-    .parent()
-    .click();
+    cy.get(".wr-customer-search vd-autocomplete .vd-autocomplete-input")
+      .clear()
+      .type(name);
+
+    cy.get(".vd-suggestion").then(elements => {
+      let actual = elements.not(".pro-suggestion-create"); // Excluding the add new option.
+      if (actual.length) {
+        cy.wrap(actual.eq(0)).click();
+      } else {
+        cy.wait(200);
+
+        // Another try.
+        return enterCustomerNameAndSelectFromAutocomplete(tryNumber + 1);
+      }
+    });
+  }
+
+  enterCustomerNameAndSelectFromAutocomplete(0);
 }
 
 export function checkCustomerBadgeDetails(

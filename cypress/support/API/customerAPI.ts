@@ -63,8 +63,6 @@ export function getCustomerId(customer: CustomerInfo) {
       )
     )
     .then(parsedCustomer => {
-      console.log("getCustomerId - PARSED RESULT");
-      console.log(parsedCustomer.id);
       return parsedCustomer.id as string;
     });
 }
