@@ -9,7 +9,7 @@ describe("Simple Test for a Cashier", function() {
       .should("be.visible")
       .type("Cashier");
 
-    cy.get("#signin_password").type("testCashier");
+    cy.get("#signin_password").type(Cypress.env("cashierPassword"));
 
     cy.get('[name="signin_submit"]').click();
 

@@ -27,6 +27,7 @@ export function addExistingCustomer(name: string) {
       let actual = elements.not(".pro-suggestion-create"); // Excluding the add new option.
       if (actual.length) {
         cy.wrap(actual.eq(0)).click();
+        
       } else {
         cy.wait(200);
 

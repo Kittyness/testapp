@@ -29,7 +29,6 @@ describe("Checking Adding customer via API", function() {
     // We definitely know that this customer doesn't exist
     api.createCustomer(currentCustomer);
     // Need the timeout to update the search
-    //cy.wait(3000);
     login(Cypress.env("cashierUser"), Cypress.env("cashierPassword"));
     customer.addExistingCustomer(currentCustomer.name);
     customer.checkCustomerIsAddedToSale(currentCustomer);
@@ -43,7 +42,6 @@ describe("Checking Adding customer via API", function() {
     });
     login(Cypress.env("cashierUser"), Cypress.env("cashierPassword"));
     // Need the timeout to update the search
-    //cy.wait(3000);
     customer.addExistingCustomer(updatedCustomer.name);
     customer.checkCustomerIsAddedToSale(updatedCustomer);
     customer.removeCustomerFromSale();
