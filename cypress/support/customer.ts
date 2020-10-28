@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 const SALE_CUSTOMER = ".sale .sale-header";
 
 export interface CustomerInfo {
@@ -8,6 +6,7 @@ export interface CustomerInfo {
   name?: string;
   companyName?: string;
   customerGroup: string;
+  customerEmail: string;
   customerCode?: string;
   phone?: string;
   email?: string;
@@ -21,7 +20,7 @@ export function addExistingCustomer(name: string) {
 
     cy.get(".wr-customer-search vd-autocomplete .vd-autocomplete-input")
       .clear()
-      .type(name);
+      .type(name, { delay: 50 });
 
     cy.get(".vd-suggestion").then(elements => {
       let actual = elements.not(".pro-suggestion-create"); // Excluding the add new option.
@@ -77,27 +76,37 @@ export function removeCustomerFromSale() {
     .click();
 }
 
+
+function enterData(data:string) {
+  return cy.get(`[name="${data}"]`)
+}
+
 export function addCustomer(customer: CustomerInfo) {
-  cy.get(".vd-button-group .vd-button--primary").click();
+  cy.get(".vd-btn-group ,vd-btn").contains('Add Customer').click();
+  
+  
+  enterData("customer.firstName").type(customer.firstName);
+  enterData("customer.lastName").type(customer.lastName);
+  enterData("customer.email").type(customer.customerEmail);
+  enterData("customer.mobile").type(customer.phone);
 
-  cy.get("#vend_customer_customer_contact_first_name").type(customer.firstName);
-  cy.get("#vend_customer_customer_contact_last_name").type(customer.lastName);
-  cy.get("#vend_customer_customer_code").type(customer.customerCode);
-  cy.get("#vend_customer_customer_contact_phone").type(customer.phone);
+  cy.get('.vd-tabs .vd-tab-button').contains('Details').click();
+  enterData("customer.customerCode").type(customer.customerCode);
 
-  cy.get(".form-button-bar .btn--primary").click();
+  cy.get(".vd-dialog-actions .vd-btn--do").click();
+  cy.wait(1000);
 }
 
 export function checkCustomerExists(customer: CustomerInfo, exists: boolean) {
-  cy.get(".cv-expand-customer .vd-text--secondary")
+  cy.get(".vd-table-list-cell .vd-id-badge__content")
     .contains(customer.customerCode)
     .should(exists ? "exist" : "not.exist");
 }
 
 export function deleteCustomer(customer: CustomerInfo) {
-  cy.get(".cv-expand-customer .vd-text--secondary")
+  cy.get(".vd-table-list-cell .vd-id-badge__content")
     .contains(customer.customerCode)
     .click();
-  cy.get(`.delete-dialog[title='${customer.name}']`).click();
-  cy.get(".vd-button--negative").click();
+  cy.get('.vd-table-list-row--expanded-content .vd-table-list-expanded-actions .vd-btn').contains('Delete').click();
+  cy.get(".vd-btn--no").click();
 }

@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 import * as customer from "../support/customer";
 import * as api from "../support/API/customerAPI";
 import { login, logout } from "../support/setup";
@@ -10,7 +8,7 @@ const currentCustomer: customer.CustomerInfo = {
   customerGroup: "All Customers",
   lastName: "Stark",
   customerCode: "TonyStark-111",
-  email: "tony@starkinc.com",
+  customerEmail: "tony@starkinc.com",
   phone: "1234567890"
 };
 
@@ -20,7 +18,7 @@ const updatedCustomer: customer.CustomerInfo = {
   customerGroup: "All Customers",
   lastName: "Man",
   customerCode: "TonyStark-111",
-  email: "tony@starkinc.com",
+  customerEmail: "tony@starkinc.com",
   phone: "1234567890"
 };
 

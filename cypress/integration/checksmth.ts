@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 import * as setup from "../support/setup";
 import * as sale from "../support/sale";
 import * as product from "../support/product";
@@ -11,15 +9,16 @@ describe("Checking Smth", function() {
   });
 
   const currentProduct: product.ProductInfo = {
-    name: "Chocolate",
-    price: "4.50",
+    name: "Chocolate Brownie",
+    price: "3.50",
     taxRate: 15
   };
-
+  const paymentType = 'Cash';
   const currentCustomer: customer.CustomerInfo = {
     customerGroup: "VIP",
     firstName: "Emmanuel",
     lastName: "Macron",
+    customerEmail: "Emmanuel.547Q@test.com",
     customerCode: "Emmanuel-547Q",
     name: "Emmanuel Macron",
     phone: "33-1-234-5678"
@@ -29,14 +28,22 @@ describe("Checking Smth", function() {
     customer.addExistingCustomer(currentCustomer.name);
     customer.checkCustomerIsAddedToSale(currentCustomer);
     product.addProduct(currentProduct.name);
+    cy.wait(2000)
     // Check available options
     sale.checkEnabledSaleHeaderActions();
-    // sale.checkProductIsAddedToSale(currentProduct, true);
+    sale.checkProductIsAddedToSale(currentProduct, true);
+
     sale.clickPayButton();
+    cy.wait(500);
+    sale.selectPaymentType(paymentType);
+    sale.clickCompleteSale();
+    
     setup.logout(Cypress.env("cashierUser"));
   });
 
   it("Cashier should be able to delete product and customer from sale", function() {
+    customer.addExistingCustomer(currentCustomer.name);
+    product.addProduct(currentProduct.name);
     cy.get(".sale-list .sale-list-item")
       .eq(0)
       .find(".li-cell-summary--remove")
@@ -56,6 +63,7 @@ describe("Checking Manager User", function() {
     firstName: "Elvis",
     lastName: "Presley",
     customerCode: "Elvis-777",
+    customerEmail: "Elvis.777@test.com",
     name: "Elvis Presley",
     phone: "64-1-234-5678"
   };
@@ -63,6 +71,7 @@ describe("Checking Manager User", function() {
   it("manager should be able to add customer", function() {
     cy.visit("/customer");
     customer.addCustomer(newCustomer);
+    cy.wait(2000);
     cy.visit("/customer");
     customer.checkCustomerExists(newCustomer, true);
   });

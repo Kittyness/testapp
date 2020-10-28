@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 import { CustomerInfo } from "../customer";
 
 const authHeaders = {
