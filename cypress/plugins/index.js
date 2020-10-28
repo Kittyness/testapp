@@ -1,5 +1,10 @@
-const cypressTypeScriptPreprocessor = require('./cy-ts-preprocessor')
-
 module.exports = on => {
-  on('file:preprocessor', cypressTypeScriptPreprocessor)
-}
+  on('before:browser:launch', (browser = {}, launchOptions) => {
+    if (browser.name === 'chrome') {
+      // Disable extensions to prevent the OneLogin extension from borking our tests.
+      launchOptions.args.push('--disable-extensions')
+
+      return launchOptions
+    }
+  })
+} 

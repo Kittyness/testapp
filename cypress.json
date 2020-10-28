@@ -2,11 +2,12 @@
   "baseUrl": "https://katesbestchillnfood.vendhq.com",
   "viewportWidth": 1280,
   "viewportHeight": 768,
+  "chromeWebSecurity": false,
   "env": {
     "managerUser": "Manager",
-    "managerPassword": "testManager",
+    "managerPassword": "testManager1999",
     "cashierUser": "Cashier",
-    "cashierPassword": "testCashier",
+    "cashierPassword": "testCashier1999",
     "accessToken": "Kh7UKpuhyP6NgxHPmOVqx_7GtgkCLJMtcAdS1Y0K"
   }
 }
