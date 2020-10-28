@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@bahmutov/add-typescript-to-cypress": "^2.1.2",
     "cypress": "^5.5.0",
     "typescript": "^3.9.7",
     "webpack": "^4.38.0"

@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 export interface ProductInfo {
   name: string;
   price: string;
@@ -12,7 +10,7 @@ export interface ProductInfo {
 }
 
 export function addProduct(name: string) {
-  cy.get(".wr-global-search vd-autocomplete .vd-autocomplete-input").type(name);
+  cy.get(".wr-global-search vd-autocomplete .vd-autocomplete-input").type(name, { delay: 100 });
 
   // Select the first product from suggestions
   cy.get(".vd-suggestion")

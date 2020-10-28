@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 import * as product from "../support/product";
 
 describe("Simple Test for a Cashier", function() {
@@ -60,7 +58,7 @@ describe("Simple Test for a Cashier", function() {
     cy.contains(".pro-payments-ready .btn--payment-type", "Cash").click();
 
     cy.get(".btn--complete-sale")
-      .contains("Done (ESC)")
+      .contains("Complete Sale")
       .click();
   });
 });
