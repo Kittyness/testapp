@@ -24,11 +24,11 @@ describe("Checking Smth", function() {
     phone: "33-1-234-5678"
   };
 
-  it.only("Cashier should be able to add product and customer to sale", function() {
+  it("Cashier should be able to add product and customer to sale", function() {
     customer.addExistingCustomer(currentCustomer.name);
     customer.checkCustomerIsAddedToSale(currentCustomer);
     product.addProduct(currentProduct.name);
-    cy.wait(1000)
+    cy.wait(2000)
     // Check available options
     sale.checkEnabledSaleHeaderActions();
     sale.checkProductIsAddedToSale(currentProduct, true);

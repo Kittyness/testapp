@@ -32,14 +32,14 @@ export function checkProductIsAddedToSale(
   added: boolean
 ) {
   if (added) {
-    cy.get(".li-cell-summary--name-container .pro-li-cell-summary-name")
+    cy.get(".li-cell-summary-container .pro-li-cell-summary-name")
       .contains(product.name)
       .should("exist");
-      cy.get(".li-cell-summary--name-container .wr-li-cell-summary-price-value")
+      cy.get(".li-cell-summary-container .wr-li-cell-summary-price-value")
       .contains(product.price)
       .should("exist");
   } else {
-    cy.get(".li-cell-summary--name-container .pro-li-cell-summary-name").should(
+    cy.get(".li-cell-summary-container .pro-li-cell-summary-name").should(
       "not.exist"
     );
   }
